@@ -8,11 +8,15 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
-// ─── CORS ─────────────────────────────────────────
-// Allow frontend to talk to backend
+// ─── CORS FIX ─────────────────────────────────────
 app.use(cors({
-  origin: 'http://localhost:5173',
-  credentials: true
+  origin: [
+    'http://localhost:5173',
+    'https://ai-code-review-livid.vercel.app'
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // ─── Body Parser ──────────────────────────────────
