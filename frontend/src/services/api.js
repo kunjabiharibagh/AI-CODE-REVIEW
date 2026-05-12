@@ -1,8 +1,9 @@
 import axios from 'axios'
 
-// Base URL of your backend
 const API = axios.create({
-  baseURL: 'http://localhost:5000/api'
+  // Uses env variable in production
+  // Falls back to localhost in development
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
 })
 
 // Add token to every request
