@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { reviewCode, getHistory } from '../services/api'
 import { useNavigate } from 'react-router-dom'
+import RealTimeFeedback from '../components/RealTimeFeedback'
 
 const LANGUAGES = [
   'JavaScript', 'TypeScript', 'Python',
@@ -115,6 +116,11 @@ function Dashboard() {
             style={styles.textarea}
             spellCheck={false}
           />
+          {/* Real Time ML Feedback */}
+            <RealTimeFeedback
+              code={code}
+                onLanguageDetected={(lang) => setLanguage(lang)}
+            />
 
           {error && <div style={styles.error}>⚠️ {error}</div>}
 
